@@ -30,7 +30,7 @@ public class TaskList {
     while (iterator.hasNext()) {
       Task task = iterator.next();
 
-      if (Objects.equals(task.taskId, taskId)) {
+      if (Objects.equals(task.taskId.toLowerCase(), taskId.toLowerCase())) {
         iterator.remove();
         System.out.println("[SUCCESS] Specified task has been successfully removed \n");
 
