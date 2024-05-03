@@ -17,11 +17,10 @@ public class TaskList {
   }
 
 
-  public String addTask(String taskTitle, LocalDate taskStart, LocalDate taskEnd) {
+  public void addTask(String taskTitle, LocalDate taskStart, LocalDate taskEnd) {
     Task createdTask = new Task(taskTitle, taskStart, taskEnd);
     this.tasks.add(createdTask);
     System.out.printf("[SUCCESS] '%S' has been successfully added \n", taskTitle);
-    return createdTask.taskId;
   }
 
   public void removeTask(String taskId) {
@@ -40,4 +39,14 @@ public class TaskList {
 
   }
 
+  public void updateTask(String taskId, LocalDate taskStart, LocalDate taskEnd) {
+    for (Task task : this.tasks) {
+      if (Objects.equals(task.taskId.toLowerCase(), taskId.toLowerCase())) {
+        task.updateTaskEnd(taskStart);
+        task.updateTaskEnd(taskEnd);
+        System.out.println("[SUCCESS] Task successfully updated");
+        break;
+      }
+    }
+  }
 }
